@@ -1,4 +1,12 @@
-// src/index.ts
+
+import connection from './db';
+
+async function buscarUsuarios() {
+    const [rows] = await connection.execute('SELECT * FROM usuarios'); // substitua pela sua tabela
+    console.log(rows);
+}
+
+buscarUsuarios();
 
 interface Categoria {
     id: number;
@@ -102,7 +110,7 @@ function removerProduto(id: number): boolean {
     return false;
 }
 
-// Função para exibir o menu principal
+// Menu principal
 function exibirMenu() {
     console.log("1. Criar Categoria");
     console.log("2. Listar Categorias");
@@ -117,7 +125,7 @@ function exibirMenu() {
     console.log("0. Sair");
 }
 
-// Função principal para capturar entradas do usuário e executar as operações
+//  Capturando entradas do usuário para executar as operações
 function main() {
     const readline = require('readline').createInterface({
         input: process.stdin,
